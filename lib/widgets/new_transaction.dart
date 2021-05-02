@@ -18,7 +18,9 @@ class _NewTransactionState extends State<NewTransaction> {
     final enteredTitle = titleController.text;
     final enteredAmount = double.parse(amountController.text);
 
-    if (enteredTitle.isEmpty || enteredAmount <= 0) return;
+    if (enteredTitle.isEmpty || enteredAmount <= 0) {
+      return;
+    }
 
     widget.addTx(
       enteredTitle,
@@ -50,17 +52,13 @@ class _NewTransactionState extends State<NewTransaction> {
               controller: amountController,
               keyboardType: TextInputType.number,
               onSubmitted: (_) => submitData(),
-              // onChanged: (val) {
-              //   amountInput = val;
-              // },
+              // onChanged: (val) => amountInput = val,
             ),
             FlatButton(
-              onPressed: submitData,
-              child: Text(
-                'Add Transaction',
-              ),
+              child: Text('Add Transaction'),
               textColor: Colors.purple,
-            )
+              onPressed: submitData,
+            ),
           ],
         ),
       ),
